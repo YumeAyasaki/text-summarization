@@ -3,10 +3,12 @@
 import { useState } from "react";
 
 import { TextBlock } from "@/components/TextBlock";
-import { Floating, FloatingButton } from "@/components/Floating";
+import { Floating, FloatingAddButton, FloatingSendButton } from "@/components/Floating";
+import { SummarizeAPI } from "@/services/summarize";
 
 export default function Home() {
   const [inputs, setInputs] = useState<string[]>(["", ""]);
+  const [outputs, setOutputs] = useState<string[]>(["", ""]);
 
   const handleInputChange = (text: string, index: number) => {
     var updatedInputs = [...inputs];
@@ -25,10 +27,34 @@ export default function Home() {
 
   const handleAdd = () => {
     setInputs([...inputs, ""]);
+    setOutputs([...outputs, ""]);
   }
 
   const handleDelete = (index: number) => {
     setInputs(inputs.filter((_, i) => i !== index));
+    setOutputs(outputs.filter((_, i) => i !== index));
+  }
+
+  const handleSend = async (index: number) => {
+    const req = {
+      message: inputs[index],
+    }
+    const res = await SummarizeAPI.getOneSummarize(req);
+    console.log(res);
+    var updateOutputs = [...outputs]
+    updateOutputs[index] = res['text'];
+    setOutputs(updateOutputs);
+  }
+
+  const handleMassSend = async () => {
+    const req = {
+      message: inputs,
+    }
+    const res = await SummarizeAPI.getMassSummarize(req);
+    console.log(res);
+    var updateOutputs = [...outputs]
+    updateOutputs = res['text'];
+    setOutputs(updateOutputs);
   }
 
   return (
@@ -45,18 +71,19 @@ export default function Home() {
               <TextBlock editable={true} text={input} onChange={(newText) => handleInputChange(newText, index)}/>
             </div>
             <div className="h-100 w-1/2 flex h-full flex-col justify-center space-y-2">
-              <TextBlock editable={false} text={input} />
+              <TextBlock editable={false} text={outputs[index]} />
             </div>
           </div>
           <input type="file" onChange={(e) => handleLoadFile(e, handleInputChange, index)}/>
-          <button className="w-[140px] cursor-pointer rounded-md bg-violet-500 px-4 py-2 font-bold mx-2 hover:bg-violet-600 active:bg-violet-700">Tóm tắt</button>
+          <button className="w-[140px] cursor-pointer rounded-md bg-violet-500 px-4 py-2 font-bold mx-2 hover:bg-violet-600 active:bg-violet-700" onClick={() => handleSend(index)}>Tóm tắt</button>
           <button className="w-[140px] cursor-pointer rounded-md bg-violet-500 px-4 py-2 font-bold mx-2 hover:bg-violet-600 active:bg-violet-700" onClick={() => handleDelete(index)}>Xoá</button>
         </div>
       )
       )}
 
       <Floating>
-        <FloatingButton onClick={handleAdd} />
+        <FloatingAddButton onClick={handleAdd} />
+        <FloatingSendButton onClick={handleMassSend}/>
       </Floating>
       </div>
   );
