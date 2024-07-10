@@ -1,0 +1,12 @@
+FROM python:3.9-bullseye
+EXPOSE 8000
+WORKDIR /app
+
+COPY ./requirements_docker.txt /app
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+RUN pip install -r requirements_docker.txt
+COPY . /app
+# RUN pip list --format=freeze > requirements.txt
+
+ENTRYPOINT ["python3"] 
+CMD ["manage.py", "runserver", "0.0.0.0:8000"]

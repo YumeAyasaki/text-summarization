@@ -1,10 +1,10 @@
 export const NavBarConstant = [
-    {
-        name: 'Tóm tắt văn bản',
-        url: '/',
-    },
-    {
-        name: 'NLU',
-        url: '/nlu',
-    }
-]
+  {
+    name: 'Text summarization',
+    url: '/',
+  },
+  {
+    name: 'Example',
+    url: '/example',
+  },
+];

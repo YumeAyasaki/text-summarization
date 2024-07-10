@@ -1,0 +1,26 @@
+version: '1.0'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

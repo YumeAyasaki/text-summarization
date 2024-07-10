@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError } from 'axios';
 
 export const configuredAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
@@ -7,8 +7,8 @@ export const configuredAxios = axios.create({
 configuredAxios.interceptors.request.use(
   (config: any) => {
     config.headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     };
     return config;
   },
