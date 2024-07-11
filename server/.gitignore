@@ -1,2 +1,5 @@
-/model
-/data
+/model/*.json
+/model/*.model
+/model/*.bin
+/model/*.safetensors
+/data/*.npy
