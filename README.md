@@ -24,7 +24,7 @@ Containerization: Docker.
 ### With docker
 1. Install Docker and Docker Compose according to their official documentation.
 2. Getting this repository on your local machine.
-2. (If cloning from Github) Get the data and model files for the server. The files are provided [here](https://drive.google.com/drive/folders/1ThR-hCepbC2jf5R23rR7fvocPuDaN86h?usp=sharing) and [here](https://drive.google.com/file/d/1sL7A8IK59jj75mEOxuGJncUG6-r2ZnLI/view?usp=sharing). You should put it in the outer server folder like this.
+2. (If cloning from Github) Get the data and model files for the server. The files are provided [here](https://drive.google.com/drive/folders/1ThR-hCepbC2jf5R23rR7fvocPuDaN86h?usp=sharing) and [here](https://drive.google.com/file/d/1sL7A8IK59jj75mEOxuGJncUG6-r2ZnLI/view?usp=sharing). You should put it in the outer server folder like this.  
 ![Where to put files](assets/where-to-put-files.png)
 3. Run ```docker compose up``` to start both client and backend services.
 3. (Optional) Run the run.bat file for a quick launch.
