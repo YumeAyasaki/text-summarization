@@ -28,6 +28,7 @@ Containerization: Docker.
 ![Where to put files](assets/where-to-put-files.png)
 3. Run ```docker compose up``` to start both client and backend services.
 3. (Optional) Run the run.bat file for a quick launch.
+4. Go to http://localhost:3000 or http://127.0.0.1:3000.
 
 Note: The server takes a long time to run (probably up to 10 minutes to finalize things) so please kindly wait for it. Most of the time, it'll finish when there's a line indicating that the data is finished prepared like this.
 ![Screen shows that the server is probably finished](assets/finished.png)
@@ -37,6 +38,7 @@ Note: The server takes a long time to run (probably up to 10 minutes to finalize
 1. Install neccessary library with ```npm install``` or ```yarn install```.
 2. For fast build, run ```npm run dev``` or ```yarn dev```.
 3. For longer but more stable build, run ```npm run build``` or ```yarn build```, and then ```npm run start``` or ```yarn start```.
+4. Go to http://localhost:3000 or http://127.0.0.1:3000.
 #### Backend
 Note: We don't exactly know how to do this more properly, so this is our (or my) attempt to replicate it.
 1. Prepare a virtual environment for our program using Python 3.9. We recommend Anaconda or virtualenv.
